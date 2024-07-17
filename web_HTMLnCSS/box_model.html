@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box1 {  /*전체 너비는 301.33이 됨. 마진은 너비에 포함 X*/
+      width: 200px;    /*컨텐츠 영역의 너비*/
+      padding-left: 25px;
+      padding-bottom: 25px;
+      margin-left: 25px;
+      margin-top: 50px;
+      border-width: 3px;
+      border-style: solid;
+      border-color: black;
+    }
+
+    .box2 {
+      width: 200px;
+      padding: 25px 50px; /*shorthand속성을 사용한 설정. 상하는 25 좌우는 50*/
+      margin: 25px auto;   
+      border: 1px dashed black; /*shorthand속성을 사용한 설정. 작성 순서에 영향없이 설정 가능.*/
+    }
+
+    .content-box {   /*기본설정. width를 컨텐츠 영역의 너비로 인식.*/
+      box-sizing: content-box;
+    }
+
+    .border-box {   /*width를 보더 포함 영역의 너비로 인식. 레이아웃 구조 짤 때 좋음.*/
+      box-sizing: border-box;
+    }
+
+
+    a,
+    span,
+    img {
+      border: 3px solid red;
+    }
+
+    h1,
+    p,
+    div {
+      border: 1px solid blue;
+    }
+
+    .container {
+      height: 500px;
+      border: 1px solid black;
+      display: flex;    /*flex 컨테이너. body가서 클래스로 불러서 사용하면 됨. 개발자도구에서 미리보기 가능.*/
+      flex-direction: row;
+    }
+
+    .none {   /*문서 구조 상에 존재하지만 사용자에게 제공되지 않음. 공간차지도 안함.*/
+      display: none;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="box1">box1</div>
+  <div class="box2">box2</div>
+
+  <div class="box content-box">content-box</div>
+  <div class="box border-box">border-box</div>
+
+  <h1>Normal flow</h1>   <!-- 박스타입은 기본적으로 노멀플로우. 왼위부터 오른아래-->
+  <p>Lorem, ipsum dolor sit amet consect explicabo</p>
+  <div>   <!-- 블럭요소는 항상 새로운 행으로 시작. 너비높이지정가능.-->
+    <p>block 요소는 기본적으로 부모 요소의 너비 100%를 차지하며, 자식 콘텐츠의 최대 높이를 취한다.</p>
+    <p>block 요소의 총 너비와 총 높이는 content + padding + border width/height다.</p>
+  </div>
+  <p>block 요소는 서로 margins로 구분된다.</p>   <!-- 인라인요소는 흐름에 포함됨. 정렬만 가능-->
+  <p>inline 요소는 <span>이 것처럼</span> 자체 콘텐츠의 너비와 높이만 차지한다.
+    그리고 inline 요소는 <a href="#">width나 height 속성을 지정 할 수 없다.</a>
+  </p>
+  <p>
+    물론 이미지도 <img src="#"> 인라인 요소다.
+    단, 이미지는 다른 inline 요소와 달리 width나 height로 크기를 조정할 수 있다.
+  </p>
+  <p>
+    만약 inline 요소의 크기를 제어하려면 block 요소로 변경하거나 inline-block 요소로 설정해주어야 한다.
+  </p>
+  
+  <div class="box none"></div>
+</body>
+
+</html>

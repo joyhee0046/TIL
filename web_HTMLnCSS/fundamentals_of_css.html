@@ -1,0 +1,78 @@
+<!--CSS 사용-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* 전체 선택자 */
+    * {
+      color: red;
+    }
+    
+    /* 타입 선택자 */
+    h2 {
+      color: orange;
+    }
+
+    h3,
+    h4 {
+      color: blue;
+    }
+
+    /* 클래스 선택자 */
+    .green {
+      color: green;
+    }
+
+    /* id 선택자 */
+    #purple {
+      color: purple;
+    }
+
+    /* 자식 결합자 */
+    .green>span {
+      font-size: 50px;
+    }
+
+    /* 자손 결합자 */
+    .green li {
+      color: brown;
+    }
+    
+    /* !important우선순위 관계를 파괴하고 아예 1등으로 적용되도록 함. 탬플릿에 주로 설정되어 있음.
+    h2 {
+      color: darkviolet !important;
+    }
+    */
+  </style>
+</head>
+
+<body>
+  <h1 style="color:blue; background-color: yellow;">Inline Style</h1>  <!--인라인 스타일-->
+  <h2>Internal Style</h2> <!--내부 스타일-->
+  <h3>External Style</h3> <!--외부 스타일-->
+  <h1 class="green">Heading</h1>
+  <h2>선택자</h2>
+  <h3>연습</h3>
+  <h4>반가워요</h4>
+  <p id="purple">과목 목록</p>
+  <ul class="green">
+    <li>파이썬</li>
+    <li>알고리즘</li>
+    <li>웹
+      <ol>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>PYTHON</li>
+      </ol>
+    </li>
+  </ul>
+  <p class="green">Lorem, <span>ipsum</span> dolor.</p>
+</body>
+
+</html>
