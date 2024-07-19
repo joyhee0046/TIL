@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .done {
+      text-decoration: line-through;
+    }
+  </style>
+</head>
+<body>
+  <form action="/todos/">
+    <input type="text">
+    <button>Todo</button>
+  </form>
+  <ul></ul>
+
+<script>
+  const form = document.querySelector('form')
+  const inputTag = document.querySelector('input')
+  const ulTag = document.querySelector('ul')
+
+  function addTodo (event) {
+
+    event.preventDefault() 
+
+    if (inputTag.value == ''){
+      alert('할일입력')
+      return
+    }
+
+    //input 입력된 상태로 submit하면 새로운 li추가. input값이 li에 text로 들어감.
+      //li태그 생성
+      //li에 text 산입
+      //input value 비우기
+      //li태그를 ul태그에 자식으로 넣기
+
+    //기본이벤트 취소
+    
+    const newLiTag = document.createElement('li')
+
+    //newLiTag.textContent = document.querySelector('input').value  
+      //인풋자체를 가져와서 박기. 아니면 변수에 할당해서 변수불러오기.
+      //클래스가 있다면 클래스에 담을수도?
+    newLiTag.textContent =inputTag.value
+    //console.log(newLiTag)
+
+    inputTag.value = ''
+
+    // newLiTag.addEventListener('click', function() {
+    //   newLiTag.classList.toggle('done')
+    // })
+
+    ulTag.appendChild(newLiTag)
+
+    const XButton = document.createElement('button')
+    XButton.textContent = "X"
+    XButton.style.marginLeft = '10px'
+    // XButton.addEventListener('click')
+
+    newLiTag.append(XButton)
+  }
+
+  form.addEventListener('submit', addTodo)
+  //버블링으로 누구한테 이벤트가 발생했는지 확인. 특정 li나 button을 판별할 내용을 따로 만들지 않아도 됨
+   ulTag.addEventListener('click', function() {
+    //console.log(event.target.tagName)
+    if (event.target.tagName =="LI") { 
+      event.target.classList.toggle('done')
+    } else if (event.target.tagName =="BUTTON"){
+      event.target.parentNode.remove()
+    }
+   })
+
+
+
+    // 이벤트를 취소한다.
+    // 입력 element를 찾고 해당 입력 element의 value 값을 저장한다.
+    // li element를 생성 후 input element의 value 값을 데이터로 저장한다
+    // ul 태그의 자식 태그로 위에서 생성한 li element를 넣는다.
+    // 삭제 버튼을 생성 후 li 태그의 자식 태그로 넣는다.
+    // 삭제 버튼을 클릭하면 해당 li element를 삭제한다
+    // li element를 클릭하면 취소선이 토글된다.
+</script>
+</body>
+</html>

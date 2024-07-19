@@ -1,0 +1,169 @@
+<!-- event.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body * {
+      margin: 10px;
+      border: 1px solid black;
+    }
+
+    #outerouter {
+      width: 300px;
+      height: 300px;
+      background-color: yellowgreen;
+    }
+
+    #outer {
+      width: 200px;
+      height: 200px;
+      background-color: crimson;
+    }
+
+    #inner {
+      width: 100px;
+      height: 100px;
+      background-color: skyblue;
+    }
+  </style>
+</head>
+
+<body>
+  <button id="btn">버튼</button>
+
+  <form id="form">
+    form
+    <div id="div">
+      div
+      <p id="p">p</p>
+    </div>
+  </form>
+
+  <div id="outerouter">
+    outerouter
+    <div id="outer">
+      outer
+      <div id="inner">inner</div>
+    </div>
+  </div>
+
+  <button id="counter-btn">카운터버튼</button>
+  <p>클릭횟수 : <span id="counter">0</span></p>
+
+  <input type="text" id="text-input">
+  <p></p>
+
+  <form id="my-form">
+    <input type="text" name="username">
+    <input type="submit">   <!--의 동작은 버블링되어 form까지 동작-->
+    <!--<button type="submit">Submit</button>-->
+  </form>
+
+  <script>
+    // 1. 버튼 선택
+    const btn = document.querySelector('#btn')
+
+    // 2. 콜백 함수
+    /*버튼이 눌리면 -> 이벤트 객체 출력, 어디에서 발생했는지 출력, 현제 객체 출력*/
+    const detectClick = function (event) {    //변수를 정의하고 함수 생성.함수표현식
+      console.log(event) // PointerEvent
+      console.log(event.currentTarget) // <button id="btn">버튼</button>
+      console.log(this) // <button id="btn">버튼</button>
+    }
+
+    // 3. 버튼에 이벤트 핸들러를 부착
+    btn.addEventListener('click', detectClick)
+
+    //버블링 가장 안에서부터 실행하며 나옴.
+    const formElement = document.querySelector('#form')
+    const divElement = document.querySelector('#div')
+    const pElement = document.querySelector('#p')
+
+    const clickHandler1 = function (event) {
+      console.log('form이 클릭되었습니다.')
+    }
+    const clickHandler2 = function (event) {
+      console.log('div가 클릭되었습니다.')
+    }
+    const clickHandler3 = function (event) {
+      console.log('p가 클릭되었습니다.')
+    }
+
+    formElement.addEventListener('click', clickHandler1)
+    divElement.addEventListener('click', clickHandler2)
+    pElement.addEventListener('click', clickHandler3)
+
+    // 이벤트 발생 위치 확인
+    const outerOuterElement = document.querySelector('#outerouter')
+    const outerElement = document.querySelector('#outer')
+    const innerElement = document.querySelector('#inner')
+
+    const clickHandler = function (event) {
+      console.log('currentTarget:', event.currentTarget.id)
+      console.log('target:', event.target.id)
+    }
+
+    outerOuterElement.addEventListener('click', clickHandler)
+
+
+    //버튼 수 늘리기
+    // 1. 초기값 할당_let하면 변수 재할당 가능.
+    let counterNumber = 0
+
+    // 2. 버튼 요소 선택_const 데이터 흐름 파악 용이
+    const counterbtn = document.querySelector('#counter-btn')
+
+    // 3. 콜백 함수 (버튼에 클릭 이벤트가 발생할때마다 실행할 코드)
+    const clickHandlercount = function () {
+      // 3.1 초기값 += 1
+      counterNumber += 1
+      // 3.2 p 요소를 선택
+      const spanTag = document.querySelector('#counter')
+      // 3.3 p 요소의 컨텐츠를 1 증가한 초기값으로 설정
+      spanTag.textContent = counterNumber
+    }
+
+    // 4. 버튼에 이벤트 핸들러 부착 (클릭 이벤트)
+    counterbtn.addEventListener('click', clickHandlercount)
+
+
+    //input받고 출력
+    // 1. input 요소 선택
+    const inputTag = document.querySelector('#text-input')
+
+    // 2. p 요소 선택
+    const pTag = document.querySelector('p')
+
+    // 3. 콜백 함수 (input 요소에 input 이벤트가 발생할때마다 실행할 코드)
+    const inputHandler = function (event) {
+      // 3.1 작성하는 데이터가 어디에 누적되고 있는지 찾기
+      // console.log(event)   //에는 currentTarget이 null로 나옴. 이는 처리가 끝나서 null이고 처리 중에만 값을 가지는 거...
+      // console.log(event.currentTarget)   //input요소 잘 나오는 것 확인 가능. 
+      console.log(event.currentTarget.value)
+      // 3.2 p요소의 컨텐츠에 작성하는 데이터를 추가
+      pTag.textContent = event.currentTarget.value
+    }
+
+    // 4. input 요소에 이벤트 핸들러 부착 (input 이벤트)
+    inputTag.addEventListener('input', inputHandler)
+
+
+
+    //기본동작 막기
+    const formTag = document.querySelector('#my-form')
+
+    const handleSubmit = function (event) {
+      event.preventDefault()   //기본 이벤트 동작 취소   //예를 들어 복사금지_기본동작은 복사인데, 이를 취소시킴.
+    }
+
+    formTag.addEventListener('submit', handleSubmit)
+
+  </script>
+</body>
+
+</html>
