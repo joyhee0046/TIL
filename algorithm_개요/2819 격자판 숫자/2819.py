@@ -45,7 +45,6 @@ def movement(idx, st_x, st_y, li):
         if 0 <= x < 4 and 0 <= y < 4:
             movement(idx + 1, x, y, li)
 
-
 T = int(input())
 for tc in range(1, T + 1):
     board = [list(map(str, input().split())) for _ in range(4)]
