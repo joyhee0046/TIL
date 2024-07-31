@@ -7,9 +7,7 @@ for tc in range(1, 1+T):
     N, K = map(int, input().split())
     li_A = list(map(int, input().split()))
 
-    li_check = [0] * N
     ans_cnt = 0
-    sum_ans = 0
 
     def dfs(idx, sum_ans):
         global ans_cnt
