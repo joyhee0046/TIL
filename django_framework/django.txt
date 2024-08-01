@@ -1,0 +1,26 @@
+## 가상환경 생성
+SSAFY@DESKTOP-0467KQ4 MINGW64 ~/Desktop/TIL/django/django_ws_1_1 (master)
+$ python -m venv venv
+
+## 가상환경 활성화
+SSAFY@DESKTOP-0467KQ4 MINGW64 ~/Desktop/TIL/django/django_ws_1_1 (master)
+$ source venv/Scripts/activate
+(venv) 
+
+## 활성화된 가상환경에서 제공된 requirements.txt를 활용하여 필요한 패키지를 설치
+SSAFY@DESKTOP-0467KQ4 MINGW64 ~/Desktop/TIL/django/django_ws_1_1 (master)
+$ pip install -r requirements.txt
+
+## 프로젝트 서버를 실행하여 정상 작동 여부 확인
+SSAFY@DESKTOP-0467KQ4 MINGW64 ~/Desktop/TIL/django/django_ws_1_1 (master)
+$ python manage.py runserver
+
+## JSON형식 : JsonResponse
+{키:값} 형식 → return JsonResponse(({"hi":"hello"}))
+
+## view함수의 retrun과 print
+return은 브라우저에 보여주는 내용.
+print는 터미널 창에 찍히는 내용. 필요에 따라 확인하는 데에 사용할 수 있을 것 같다.
+
+## 직렬화.
+return JsonResponse(리스트, safe = False)
