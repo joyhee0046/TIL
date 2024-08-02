@@ -15,12 +15,16 @@ $ pip install -r requirements.txt
 SSAFY@DESKTOP-0467KQ4 MINGW64 ~/Desktop/TIL/django/django_ws_1_1 (master)
 $ python manage.py runserver
 
+↑↑↑ 완전 기본동작. 근데 여기에 DB가 추가된다면
+##메이크마이그레이션이랑 마이그레이트까지가 기본동작
+
+
 ## JSON형식 : JsonResponse
 {키:값} 형식 → return JsonResponse(({"hi":"hello"}))
+리스트에 담겨있다면 → return JsonResponse(리스트, safe = False)
 
 ## view함수의 retrun과 print
 return은 브라우저에 보여주는 내용.
 print는 터미널 창에 찍히는 내용. 필요에 따라 확인하는 데에 사용할 수 있을 것 같다.
 
 ## 직렬화.
-return JsonResponse(리스트, safe = False)
