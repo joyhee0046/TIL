@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const roles = ['주연배우', '조연배우', '주연배우', '우정출연', '우정출연', '조연배우']
+    const names = ['홍길동', '이춘향', '금나래', '장보고', '임꺽정', '강감찬']
+
+    let length = 0
+    for (const i of roles) {
+      length ++
+    }
+
+    let idx = 0
+    let message =''
+    while (length > 0) {
+      if (roles[idx] === '주연배우'){
+        message = `주연배우 : ${names[idx]} 님 반갑습니다!`
+      }
+      else if (roles[idx] === '조연배우'){
+        message = `${names[idx]} 님 환영합니다!`
+      }
+      else {
+        message = `${names[idx]} 님 와 주셔서 감사합니다!`
+      }
+      console.log(message)
+      length --
+      idx ++
+    }
+
+  </script>
+</body>
+</html>
