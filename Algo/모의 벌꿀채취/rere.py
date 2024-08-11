@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open("sample_input.txt", 'r')
+sys.stdin = open("sample_input1.txt", 'r')
 
 import itertools
 # 주어진 입력 받기
