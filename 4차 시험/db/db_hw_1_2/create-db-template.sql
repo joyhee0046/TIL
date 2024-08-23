@@ -1,0 +1,20 @@
+-- Active: 1724202271611@@127.0.0.1@3306
+CREATE DATABASE sns_db
+    DEFAULT CHARACTER SET = 'utf8mb4';
+
+USE sns_db;
+
+CREATE TABLE users(
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  username VARCHAR(255),
+  email VARCHAR(255),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  );
+
+CREATE Table posts(
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  user_id INT,
+  content TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY(user_id) REFERENCES users(id)
+  );
