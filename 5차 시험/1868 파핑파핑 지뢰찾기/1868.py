@@ -31,6 +31,7 @@ for test_case in range(1, T + 1):
                                     right += 1
                             if arr_ch[ncol][nrow] == 2:
                                 right += 1
+                    print(right, check)
                     if check == right:
                         count += 1
                         for v in range(9):
@@ -38,9 +39,12 @@ for test_case in range(1, T + 1):
                             nrow = row + dprow[v]
                             if 0 <= ncol < N and 0 <= nrow < N:
                                 arr_ch[ncol][nrow] = 1
+
     for col in range(N):
         for row in range(N):
             if arr_ch[col][row] == 0:
                 count += 1
 
     print(f'#{test_case} {count}')
+
+## 지금은 한바퀴만 검사할 수 있음.  공간 넓힐수 있도록 재귀돌아야.
