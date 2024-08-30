@@ -11,5 +11,7 @@ for tc in range(1, T+1):
     lli = [0 for _ in range(N)]
     tt_l = {}
     for i in range(N):
+        tt_l[i] = ''
         for j in range(N):
             tt_l[i] = (j, ((xli[i] - xli[j])**2 + (yli[i] - yli[j])**2))
+

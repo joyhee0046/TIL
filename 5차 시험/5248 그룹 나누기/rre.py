@@ -16,7 +16,7 @@ for tc in range(1, 1 + T):
                             break
                         group[j] += group[k]
                         group[k] = []
-                        print(group)
+                        # print(group)
                         break
                 break
             if li[i+1] in group[j]:
@@ -26,7 +26,7 @@ for tc in range(1, 1 + T):
                             break
                         group[j] += group[k]
                         group[k] = []
-                        print(group)
+                        # print(group)
                         break
                 break
     cnt = -1
