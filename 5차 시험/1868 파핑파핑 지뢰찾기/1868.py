@@ -1,6 +1,7 @@
 import sys
 sys.stdin = open('input.txt', 'r')
 
+from collections import deque
 T = int(input())
 for test_case in range(1, T + 1):
     N = int(input())
@@ -31,7 +32,7 @@ for test_case in range(1, T + 1):
                                     right += 1
                             if arr_ch[ncol][nrow] == 2:
                                 right += 1
-                    print(right, check)
+                    # print(right, check)
                     if check == right:
                         count += 1
                         for v in range(9):

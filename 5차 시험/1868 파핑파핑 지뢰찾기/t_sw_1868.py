@@ -1,6 +1,6 @@
 import sys
 from collections import deque
-sys.stdin = open("input (1).txt", "r")
+sys.stdin = open("input.txt", "r")
 
 dxy = [[0, 1], [1, 1], [1, 0], [1, -1], [0, -1], [-1, -1], [-1, 0], [-1, 1]]
 T = int(input())
@@ -41,12 +41,16 @@ for test_case in range(1, T + 1):
             while queue:
                 ci, cj = queue.popleft()
 
+                # 주변에 폭탄이 존재한다면 터트리지 않음
+                if arr[ci][cj] != 0: continue
                 for dx, dy in dxy:
                     ni, nj = ci + dx, cj + dy
                     if 0 > ni or ni >= N or 0 > nj or nj >= N: continue
                     if arr[ni][nj] == '*': continue  # 폭탄이면 큐에 넣지 않고 continue
                     if visited[ni][nj]: continue
+
                     visited[ni][nj] = True
+                    # if arr[ni][nj] != 0: continue
                     queue.append((ni, nj))
             res += 1
 
