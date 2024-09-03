@@ -1,9 +1,14 @@
+'''오답
+채점용 input 파일로 채점한 결과 fail 입니다.
+(오답 : 20개의 테스트케이스 중 5개가 맞았습니다.)
+
+제한시간 초과가 발생하였습니다. 제한시간 초과로 전체 혹은 일부 테스트 케이스는 채점이 되지 않을 수 있습니다.'''
+
 import sys
 sys.stdin = open('sample_input.txt', 'r')
 
 from collections import deque
 def find_land(map):
-
     while queue:
         cx, cy = queue.popleft()
         visit_map[cx][cy] = True
@@ -17,6 +22,7 @@ def find_land(map):
                 continue
             check_map[nx][ny] = check_map[cx][cy]+1
             visit_map[nx][ny] = True
+            if
             queue.append((nx, ny))
     return check_map
 
@@ -30,24 +36,19 @@ for tc in range(1, T+1):
     check_map = [[999999] * M for _ in range(N)]
 
     queue = deque([])
-    # water_spot = []
-    # land_spot = []
-    # 모든 칸 확인하기, 땅이 어디고 물이 어딘지
+    # 모든 칸 확인하기, 물에서 탐색 시작
     for i in range(N):
         for j in range(M):
             if summer_map[i][j] == 'W':
-                # water_spot.append((i, j))
                 check_map[i][j] = 0
                 queue.append((i, j))
                 visit_map = [[False] * M for _ in range(N)]
-                visit_map[i][j] = True
-
                 continue
-            # land_spot.append((i, j))
     find_land(check_map)
-    # for x, y in water_spot:
-    #     dist = 0
-    #     find_land(check_map, x, y)
 
-    print(summer_map, visit_map, check_map)  # 섬의 개수 출력
-    print(f'#{tc} {sum(sum(check_map, []))}')
+    ans = 0
+    for i in range(N):
+        for j in range(M):
+            ans += check_map[i][j]
+
+    print(f'#{tc} {ans}')
