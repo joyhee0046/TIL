@@ -6,7 +6,6 @@ for i in range(n):
 
 max_p = 0
 
-
 def com_p(day, p=0, meetings=meetings, n=n):
     global max_p
 
