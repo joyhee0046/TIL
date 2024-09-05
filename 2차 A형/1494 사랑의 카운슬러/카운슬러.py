@@ -1,6 +1,9 @@
-# 100개 中 26개
-import sys
-sys.stdin = open('input.txt', 'r')
+# 100개 中 31개
+# 0-1과 1-0의 조합이 다른 결과를 가지는데, for문으로는 후순위를 처리할 수 없어서
+# 재귀로 돌려야할 것 같다.
+
+# import sys
+# sys.stdin = open('input.txt', 'r')
 
 import itertools
 
@@ -16,6 +19,7 @@ T = int(input())
 for tc in range(1, T+1):
     N = int(input())
     mapli = [list(map(int, input().split())) for _ in range(N)]
+    mapli = sorted(mapli, key = lambda x: [x[1], x[0]])
 
     # 매칭할 수 있는 조합 찾기
     match = list(itertools.combinations([i for i in range(N)], 2))
