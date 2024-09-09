@@ -1,13 +1,12 @@
-# import sys
-# sys.stdin = open("sample_input.txt", "r")
+### 점심 식사시간_DFS_1계단 2계단 중 선택하여 가장 합리적인 선택하기
+import sys
+sys.stdin = open("sample_input.txt", "r")
 
 from collections import deque
-
 
 # 자리부터 계단까지 거리 구하기
 def get_dis(a, b):
     return abs(a[0] - b[0]) + abs(a[1] - b[1])
-
 
 # 계단 내려가는 중_계단 내 최대인원 3명_문제조건
 def down_stairs(stair_on_list):
@@ -16,7 +15,6 @@ def down_stairs(stair_on_list):
         if stair_on_list[idx] != 0:
             stair_on_list[idx] -= 1
     return stair_on_list
-
 
 # 계단 진입시키기 함수
 def place_people_on_stairs(waiting_queue, stair_on_list, stair_len, cnt_time):
@@ -31,7 +29,6 @@ def place_people_on_stairs(waiting_queue, stair_on_list, stair_len, cnt_time):
             else:
                 stair_on_list[stair_idx] = stair_len
     return
-
 
 # 메인 함수
 def dfs(idx, a_dist_list, b_dist_list):
@@ -80,10 +77,9 @@ def dfs(idx, a_dist_list, b_dist_list):
     # 선택한 사람을 첫번째 계단으로 보내기
     a_dist = get_dis(stair_list[0][:2], people_list[idx])
     dfs(idx + 1, a_dist_list + [a_dist], b_dist_list)
-    # 선택한 사람을 두번째 계단으로 보내기
+    # 선택한 사람을 두번째 계단으로 보내기ㅛ
     b_dist = get_dis(stair_list[1][:2], people_list[idx])
     dfs(idx + 1, a_dist_list, b_dist_list + [b_dist])
-
 
 # 주어진 입력 받기
 T = int(input())

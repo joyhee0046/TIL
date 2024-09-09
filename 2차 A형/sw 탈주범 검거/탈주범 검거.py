@@ -1,11 +1,12 @@
-# import sys
-# sys.stdin = open("sample_input.txt", 'r')
+### 탈주범 검거_경로탐색
+import sys
+sys.stdin = open("sample_input (1).txt", 'r')
+
 from collections import deque
 
-T = int(input())
 # 사방 탐색
 up, down, left, right = (-1, 0), (1, 0), (0, -1), (0, 1)
-# 구조물 길 알려주기
+# 구조물 설정
 structure = {1: [up, down, left, right], 2: [up, down], 3: [left, right], 4: [up, right], 5: [down, right],
              6: [down, left], 7: [up, left]}
 
@@ -23,14 +24,14 @@ def catch(x, y):
         # l시간 지났으면 종료
         if tunnel_check[x][y] == l:
             return cnt
-        # 다음 자리
+        # 진행할 다음 자리
         for dx, dy in structure[tunnel[x][y]]:
             nx = x + dx
             ny = y + dy
-            # 구조물을 벗어나는지 확인
+            # 구조물을 벗어나면 지나가기
             if 0 > nx or nx >= n or 0 > ny or ny >= m:
                 continue
-            # 확인한 자리인지, 길이 없는지 확인
+            # 이미 확인했던 자리면 지나가기, 길이 없으면 지나가기
             if tunnel_check[nx][ny] != 0 or tunnel[nx][ny] == 0:
                 continue
             # 구조물에 저장된 길
@@ -46,10 +47,12 @@ def catch(x, y):
     return cnt
 
 # 주어주는 입력 받기
+T = int(input())
 for tc in range(1, 1 + T):
     n, m, r, c, l = map(int, input().split())
     tunnel = [list(map(int, input().split())) for _ in range(n)]
     tunnel_check = [[0] * m for _ in range(n)]
     # 시작점 넣어서 함수 시작
     ans = catch(r, c)
+    # 정답 출력
     print(f'#{tc}', ans)

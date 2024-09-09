@@ -1,21 +1,23 @@
-# import sys
-# sys.stdin = open('sample_input (3).txt', 'r')
+### 보호필름_DFS
+import sys
+sys.stdin = open('sample_input (3).txt', 'r')
 
 def chk_test():
-    #
+    # 비교하기 위한 리스트값 미리 준비
     chk_a_list = [0] * K
     chk_b_list = [1] * K
-
+    # 한줄씩 검사하기
     for w_i in range(W):
         is_success = False
-
         for d_i in range(D - K + 1):
             cur_chk = [film[tmp_i][w_i] for tmp_i in range(d_i, d_i + K)]
             if cur_chk == chk_a_list or cur_chk == chk_b_list:
                 is_success = True
                 break
+        # 통과하지 못했다면 F
         if not is_success:
             return False
+    # 통과했다면 T
     return True
 
 def test_film(film, depth=0, cnt_inject=0, chk_list=[]):
@@ -23,7 +25,7 @@ def test_film(film, depth=0, cnt_inject=0, chk_list=[]):
     # 갱신 값을 넘어서 더이상 검증이 무의미한 경우 지나가기
     if cnt_inject >= min_inject:
         return
-    #
+    # 함수로 넘어가서 약품 넣기
     if chk_test():
         # 최소 약품 투입 횟수로 갱신
         min_inject = min(min_inject, cnt_inject)

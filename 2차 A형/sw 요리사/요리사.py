@@ -1,3 +1,6 @@
+import sys
+sys.stdin = open('sample_input.txt', 'r')
+
 def comb(arr, n):
     result = []
     if n == 1:
