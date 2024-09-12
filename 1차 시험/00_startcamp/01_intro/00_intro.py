@@ -1,2 +1,0 @@
-# ctrl + s 
-print('hello')
