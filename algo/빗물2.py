@@ -1,37 +1,22 @@
 import sys
 sys.stdin = open('14719.txt', 'r')
+
+# 입력받기
 T = int(input())
-H, W = map(int, input().split())
-li = list(map(int, input().split()))
+for tc in range(T):
+    H, W = map(int, input().split())
+    li = list(map(int, input().split()))
 
-leastdeep = 0
-deep = 0
-ans = 0
-# max(li)
-for i in range(W):
-    if li[i] > leastdeep:
-        leastdeep = li[i]
-    ans += (leastdeep - li[i])
-if ans == 0:
+    ans = 0
+    for i in range(1, W - 1):
+        # 앞부터 가장 높은 벽 찾아주기
+        least_deep = max(li[:i])
+        # 가장 높은벽 뒤부터 가장 높은 벽 찾아주기
+        deep = max(li[i+1:])
+        # 채울 수 있는 높이 확인하기
+        Precipitation = min(least_deep, deep)
+        # 벽이랑 같은 높이가 아니라면 결과에 더하기
+        if li[i] < Precipitation:
+            ans += Precipitation - li[i]
+    # 정답 출력
     print(ans)
-    flag = False
-else:
-    flag = True
-while flag:
-    if li[i] != leastdeep:
-        for i in range(W - 1, 0, -1):
-            if li[i] == leastdeep:
-                check = li[i + 1:]
-                deep = max(check)
-                if max(check) == li[-1]:
-                    ans -= ((W - i - 1) * (leastdeep - deep))
-                    flag = False
-                    break
-                leastdeep = max(check)
-                ans -= ((W - i - 1) * (check[1] - check[i - 1]))
-                flag = False
-                break
-    flag = False
-    break
-
-print(ans)

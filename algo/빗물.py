@@ -1,3 +1,5 @@
+# 미완성
+
 import sys
 sys.stdin = open('14719.txt', 'r')
 
@@ -42,7 +44,5 @@ for tc in range(T):
                         flag = False
                         break
 
-    flag = False
-    break
 
     print(ans)
