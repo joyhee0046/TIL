@@ -2,19 +2,12 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/data_analysis/data_analysis_hw_8_2" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/data_analysis/data_analysis_hw_8_4" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/data_analysis/data_analysis_hw_9_2" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/data_analysis/data_analysis_hw_9_4" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/data_analysis/data_analysis_ws_8_1" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/data_analysis/data_analysis_ws_8_2" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/data_analysis/data_analysis_ws_8_3" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/data_analysis/data_analysis_ws_8_4" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/data_analysis/data_analysis_ws_8_5" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/data_analysis/data_analysis_ws_9_1" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/data_analysis/data_analysis_ws_9_2" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/data_analysis/data_analysis_ws_9_3" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/data_analysis/data_analysis_ws_9_4" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/data_analysis/data_analysis_ws_9_5" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/data_analysis/data_analysis_hw_11_2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/data_analysis/data_analysis_hw_11_4" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/data_analysis/data_analysis_ws_11_1" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/data_analysis/data_analysis_ws_11_2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/data_analysis/data_analysis_ws_11_3" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/data_analysis/data_analysis_ws_11_4" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/data_analysis/data_analysis_ws_11_5" vcs="Git" />
   </component>
 </project>
