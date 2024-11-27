@@ -1,6 +1,5 @@
 ## 두 배
 '''
-두 배
 양수와 음수로 이루어진 길이 N의 배열이 있다.
 배열의 합이 2*N(N 곱하기 2) 이상이 될 수 있도록 해야한다.
 임의의 i (0 <= i <= N-1)을 지정하여 A[i] = max(A[i]+i, i)로 바꿀 수 있다.
@@ -8,50 +7,54 @@ max(A[i] + i, i)는 A[i] + i 와 i 중 큰 값을 의미한다.
 바꾸는 횟수를 최소로 해서 배열의 합이 2N 이상이 되는 횟수를 출력해라.
 단 한번 변경한 값은 다시 바꿀 수 없다
 
-예를들어, 1, -2, 2, 3으로 받게 될 때, 2번째인 -2를 max(A[1] + 2, 2)로 하여 2로 변환 할 수 있다. 그렇게 되면 1 + 2(변환된 수) + 2 + 3 = 8 ( >= 2 * 4) 이므로 최소 변환 횟수는 1이 된다.
+예를들어, 1, -2, 2, 3으로 받게 될 때, 2번째인 -2를 max(A[1] + 2, 2)로 하여 2로 변환 할 수 있다.
+그렇게 되면 1 + 2(변환된 수) + 2 + 3 = 8 ( >= 2 * 4) 이므로 최소 변환 횟수는 1이 된다.
 
 각 테스트케이스에 첫번째 줄은 N, 두번째 줄은 배열을 의미한다
 4 <= N <= 1000
 '''
+
+# universe 함수: 각 요소에 대해 변환 후 얻을 수 있는 증가량을 계산하는 함수
 def universe():
-    univ = [0]*n
-    for i in range(n):
-        univ[i] = max(arr[i]+i+1, i+1)
-        univ[i] -= arr[i]
-    return univ
+    univ = [0]*n  # 증가량을 저장할 리스트 초기화
+    for i in range(n):  # 배열의 각 인덱스에 대해
+        # max(A[i] + i + 1, i + 1) 계산
+        univ[i] = max(arr[i] + i + 1, i + 1)
+        univ[i] -= arr[i]  # 증가량 계산 (변환 후 값에서 기존 값을 빼기)
+    return univ  # 계산된 증가량 리스트 반환
 
-
+# cal 함수: 목표값을 채우기 위해 최소 변환 횟수를 계산하는 함수
 def cal(num):
-    global ans
-    for i in range(n):
-        num -= double[i]
-        ans +=1
-        if num <= 0:
+    global ans  # 변환 횟수를 추적하는 글로벌 변수
+    for i in range(n):  # 증가량 리스트의 각 요소를 확인
+        num -= double[i]  # 변환으로 얻을 수 있는 증가량을 부족한 값에서 차감
+        ans += 1  # 변환 횟수 증가
+        if num <= 0:  # 목표값을 달성하면 종료
             return
 
+T = int(input())  # 테스트 케이스의 수 입력
 
-T = int(input())
+for tc in range(T):  # 각 테스트 케이스에 대해 반복
+    ans = 0  # 변환 횟수를 0으로 초기화
+    n = int(input())  # 배열의 크기 입력
+    arr = list(map(int, input().split()))  # 배열의 요소들 입력
+    hap = 0  # 배열의 합을 계산하기 위한 변수
 
-for tc in range(T):
-    ans = 0
-    n = int(input())
-    arr = list(map(int, input().split()))
-    hap = 0
+    # 배열의 합을 계산
     for k in range(n):
         hap += arr[k]
 
-    if hap < 2*n:
+    # 배열의 합이 목표값 2 * n보다 작은 경우 변환이 필요함
+    if hap < 2 * n:
+        # 각 요소에서 얻을 수 있는 증가량을 계산
         double = universe()
-        double.sort(reverse=True)
-        need_num = 2*n - hap
+        double.sort(reverse=True)  # 증가량 리스트를 내림차순으로 정렬
+        need_num = 2 * n - hap  # 목표값과 현재 합의 차이 (부족한 값)
+        # 부족한 값을 채우기 위해 필요한 변환 횟수를 계산
         cal(need_num)
 
-    print(f'#{tc+1}', ans)
-
-
-
-
-
+    # 각 테스트 케이스에 대해 변환 횟수를 출력
+    print(f'#{tc + 1}', ans)
 
 
 '''

@@ -1,6 +1,5 @@
 ## 다리만들기2
-# https://www.acmicpc.net/problem/17472
-
+# 다리는 직선으로만 놓을 수 있다. 모든 섬이 서로 연결되어야 함. 다리 위치는 교차 가능인데, 교차한다고 길이가 줄어드는 건 아님. 0바다1땅
 
 import sys
 from collections import deque

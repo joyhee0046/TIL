@@ -1,6 +1,5 @@
 ## 선수과목
-# https://www.acmicpc.net/problem/14567
-# https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV18TrIqIwUCFAZN&
+# 해당 과목을 최소 몇 학기에 이수할 수 있는지
 
 from collections import deque
 
@@ -38,8 +37,10 @@ def find_minimum_semesters(N, M, prerequisites):
 
 # 입력 받기
 N, M = map(int, input().split())  # 과목 수(N), 선수 조건 수(M)
-prerequisites = [tuple(map(int, input().split())) for _ in range(M)]  # 선수 조건 입력
-
+temp = list(map(int, input().split()))  # 선수 조건 입력
+prerequisites = []
+for i in range(0, N, 2):
+    prerequisites.append([temp[i], temp[i+1]])
 # 최소 학기 계산
 result = find_minimum_semesters(N, M, prerequisites)
 

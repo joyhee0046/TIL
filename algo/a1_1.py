@@ -8,6 +8,7 @@ N*N격자판 상에서 하강 모의실험을 한다. 격자판의 맨 위(제1�
 0
 1
 0
+
 1
 1
 1
@@ -31,8 +32,8 @@ N*N격자판 상에서 하강 모의실험을 한다. 격자판의 맨 위(제1�
 장애물들을 가진 N*N 격자판의 초기 상태가 주어질 때, 맨 윗줄에 있는 블록들을 동시에 하강시킨 후, 이 결과들로부터 맨 왼쪽열에 있는 블록들을 우측하강 시킨결과를 알아내는 python코드.
 '''
 
-# N = int(input())
-# board = [list(map(int, input().split()))for _ in range(N)]
+import sys
+sys.stdin = open('1_1.txt', 'r')
 
 def calculate_forces(board, N):
     """블럭이 가지고 있는 힘계산
